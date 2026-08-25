@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-class Student {
+class StudentById {
 
     private int studentId;
     private String studentName;
     private int marks;
 
-    public Student(int studentId, String studentName, int marks) {
+    public StudentById(int studentId, String studentName, int marks) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.marks = marks;
@@ -34,28 +34,28 @@ class Student {
     }
 }
 
-public class StudentMarksComparator {
+public class StudentIdComparator {
 
     public static void main(String[] args) {
 
-        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<StudentById> students = new ArrayList<>();
 
-        students.add(new Student(101, "Sujeet", 85));
-        students.add(new Student(102, "Rahul", 65));
-        students.add(new Student(103, "Amit", 92));
+        students.add(new StudentById(103, "Amit", 75));
+        students.add(new StudentById(101, "Sujeet", 85));
+        students.add(new StudentById(102, "Rahul", 90));
 
-        Comparator<Student> marksComparator = new Comparator<Student>() {
+        Comparator<StudentById> idComparator = new Comparator<StudentById>() {
 
-                    @Override
-                    public int compare(Student student1, Student student2) {
+            @Override
+            public int compare(StudentById student1, StudentById student2) {
 
-                        return Integer.compare(student1.getMarks(), student2.getMarks());
-                    }
-                };
+                return Integer.compare(student1.getStudentId(), student2.getStudentId() );
+            }
+        };
 
-        Collections.sort(students, marksComparator);
+        Collections.sort(students, idComparator);
 
-        for (Student student : students) {
+        for (StudentById student : students) {
             System.out.println(student);
         }
     }
